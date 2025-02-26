@@ -1,0 +1,145 @@
+# Rime schema settings
+# encoding: utf-8
+
+schema:
+    schema_id: 092_sd
+    name: '三九二'
+    version: '1.0'
+    author:
+        - 2350376380
+    dependencies:
+        - pinyin_simp #拼音反查
+        - stroke #笔画反查
+
+switches:
+    - name: ascii_mode
+      reset: 0
+      states: [中文, 西文]
+    - name: chaifen
+      reset: 0
+      states: [拆隐, 拆显]
+
+engine:
+    processors:
+        - selector
+        - ascii_composer
+        - recognizer
+        - key_binder
+        - speller
+        - punctuator
+        - navigator
+        - express_editor
+    segmentors:
+        - ascii_segmentor
+        - matcher
+        - abc_segmentor
+        - affix_segmentor@bihua_lookup
+        - affix_segmentor@pinyin_lookup
+        - punct_segmentor
+        - fallback_segmentor
+    translators:
+        - punct_translator
+        - table_translator
+        - table_translator@bihua_lookup
+        - script_translator@pinyin_lookup
+        - history_translator@history
+    filters:
+        - simplifier@chaifen
+        - reverse_lookup_filter@bihua_reverse_lookup
+        - reverse_lookup_filter@pinyin_reverse_lookup
+        - uniquifier
+
+speller:
+    alphabet: 'qwertasdfgzxcvbyuiophjklnm'
+    initials: 'qwertasdfgzxcvbyuiophjklnm'
+    max_code_length: 3
+    auto_select: true
+    auto_select_pattern: ^z\w|^\w{3}$
+    auto_clear: max_length #manual|auto|max_length 空码按下一键确认清屏|空码自动清|达到最长码时后码顶上清屏
+
+translator:
+    dictionary: 092_sd
+    enable_user_dict: false
+    enable_encoder: false
+    enable_sentence: false
+    strict_spelling: true
+    enable_completion: false
+    encode_commit_history: false
+    max_phrase_length: 5
+
+history:
+   input: z
+   size: 1 #重复前几次上屏
+   initial_quality: 1 #首选
+
+# ↓↓ 反查部分 ↓↓
+bihua_lookup:
+    tag: bihua_lookup
+    dictionary: stroke
+    enable_user_dict: false
+    enable_encoder: false
+    enable_sentence: false
+    strict_spelling: true
+    enable_completion: true
+    encode_commit_history: false
+    prefix: '~'
+    tips: '〔笔画反查〕'
+
+bihua_reverse_lookup:
+    tags: [bihua_lookup]
+    overwrite_comment: true
+    dictionary: 092_sd
+
+pinyin_lookup:
+    tag: pinyin_lookup
+    dictionary: pinyin_simp
+    enable_user_dict: false
+    enable_encoder: false
+    enable_sentence: false
+    strict_spelling: true
+    enable_completion: true
+    encode_commit_history: false
+    prefix: '`'
+    tips: '〔拼音反查〕'
+
+pinyin_reverse_lookup:
+    tags: [pinyin_lookup]
+    overwrite_comment: true
+    dictionary: 092_sd
+
+chaifen:
+    opencc_config: 092_sd_cf.json
+    option_name: chaifen
+    show_in_comment: true
+    comment_format:
+        - 'xform/^/〔/'
+        - 'xform/$/〕/'
+    tags:
+        - abc
+    tips: char # char/all
+
+punctuator:
+    import_preset: symbols
+
+key_binder:
+    bindings:
+        - { when: has_menu, accept: ';', send: 2 }
+        - { when: has_menu, accept: "'", send: 3 }
+
+recognizer:
+    patterns:
+        # abc: "^[a-y]{3}$"
+        # z: "^zz?$"
+        bihua_lookup: "^~[hspnz]?[hspnz]*'?$"
+        pinyin_lookup: "^`[qwtasdfgzxcvbyphjklnm]?[a-z]*'?$"
+
+menu:
+    page_size: 10
+    alternative_select_labels: ['1.', '2.', '3.', '4.', '5.', '6.', '7.', '8.', '9.', '0.']
+    # alternative_select_labels: [㊀, ㊁, ㊂, ㊃, ㊄, ㊅, ㊆, ㊇, ㊈, ㊉]
+
+style:
+    horizontal: true
+    layout:
+        max_width: 0
+        min_width: 0
