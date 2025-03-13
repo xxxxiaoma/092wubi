@@ -14,6 +14,8 @@ import_tables:
 传说中的	wysk
 同一时间	mgju
 叠词	coyn
+想象中的	tlsk
+副屏	rlnu
 
 辛辛苦苦	aaaa
 花花草草	aaaa
@@ -5512,9 +5514,8 @@ import_tables:
 歹毒	bggx
 玉衡	bghc
 飘瓦虚舟	bghe
-耳目	bghh
 死不瞑目	bghh
-耳食	bghh
+耳目	bghh
 歹徒	bghk
 黑恶势力	bghl
 耳热	bgho
@@ -11257,7 +11258,6 @@ import_tables:
 运送	cpsp
 这样	cpsp
 这片	cpst
-这枚	cpst
 肯定要	cpsv
 驼鹿	cpsx
 这笔	cptc
@@ -13243,8 +13243,8 @@ import_tables:
 大大小小	ddii
 含含混混	ddii
 大大法法	ddii
-总感觉	ddim
 石洞	ddim
+总感觉	ddim
 石油	ddin
 石漠	ddis
 石头	ddiw
@@ -25329,10 +25329,10 @@ import_tables:
 无风	fsnr
 无几	fsnt
 无事	fsnv
-都可以	fsnw
-才可以	fsnw
 无以	fsnw
 直木必伐	fsnw
+都可以	fsnw
+才可以	fsnw
 无悔	fsnx
 无序	fsoc
 无双	fsoe
@@ -33413,8 +33413,8 @@ import_tables:
 毫不客气	hgpe
 书画家	hgpe
 上不着天	hgpg
-代表着	hgph
 执着	hgph
+代表着	hgph
 睡不着	hgph
 其实	hgpi
 目不窥园	hgpl
@@ -99217,9 +99217,9 @@ import_tables:
 红票	xabi
 纵向	xabk
 练出	xabm
-来到了	xabn
 红了	xabn
 红袖	xabn
+来到了	xabn
 翘辫子	xabo
 红袍	xabq
 纵隔	xabr
@@ -101670,8 +101670,8 @@ import_tables:
 纺车	xplg
 进去	xplh
 翘足	xplh
-器宇轩昂	xplj
 进制	xplj
+器宇轩昂	xplj
 缩回	xplk
 缩略	xplo
 张家界	xplw
